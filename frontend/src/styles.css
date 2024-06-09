@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Ringbearer';
+    src: url('assets/font/ringbearer.medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body{
+    height: 100%;
+}
+
+.content{
+    height: 100%;
+    padding: 0;
+    font-family: "Ringbearer";
+    background: linear-gradient(to left, rgba(0,0,0,0.15), rgba(255,255,255,0));
+    background-color: #EFD8C2;
+}
+
+.card{
+    background: linear-gradient(to left, rgba(0,0,0,0.15), rgba(255,255,255,0))!important;
+    background-color: #E7BC94!important;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25)!important;
+}
+
+.btn{
+    white-space: normal;
+    overflow: hidden;
+}
+
+.btn-dil-primary{
+    background: linear-gradient(to left, rgba(0,0,0,0.15), rgba(255,255,255,0))!important;
+    background-color: #E7BC94;
+    border: solid 1px #B19271;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25);
+    border-radius: 0;
+    font-size: 20px!important;
+}
+
+.btn-dil-green{
+    background: linear-gradient(to left, rgba(0,0,0,0.15), rgba(255,255,255,0))!important;
+    background-color: #379C6A!important;
+    border: solid 1px #B19271;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25);
+    border-radius: 0;
+    font-size: 20px!important;
+    color: white
+}
+
+.btn-dil-blue{
+    background: linear-gradient(to left, rgba(0,0,0,0.15), rgba(255,255,255,0))!important;
+    background-color: #306D97!important;
+    border: solid 1px #B19271;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25);
+    border-radius: 0;
+    font-size: 20px!important;
+    color: white
+}

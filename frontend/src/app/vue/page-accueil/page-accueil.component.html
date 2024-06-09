@@ -1,0 +1,26 @@
+<app-horizontal-nav-bar></app-horizontal-nav-bar>
+
+
+<div class="row my-4 px-3">
+    <div class="col-2 d-none d-sm-block d-sm-none d-md-block">
+        <h2 class="overflow-auto">Categories</h2>
+        <div class="d-flex flex-column">
+            <a *ngFor="let categorie of categories" class="btn btn-dil-primary mb-2">{{ categorie }}</a>
+        </div>
+    </div>
+
+    
+    <div class="col-md-10 col-12 d-flex flex-column mb-3">
+        <div>
+            <h1>Produit du jour</h1>
+            <app-produit-du-jour-block [produit]=produitDuJour></app-produit-du-jour-block>
+        </div>
+
+        <div class="my-4 overflow-auto">
+            <h2>Explorer</h2>
+            <div class="d-flex justify-content-start">
+                <app-produit-block-small *ngFor="let produit of produits" [produit]=produit></app-produit-block-small>
+            </div>
+        </div>
+    </div>
+</div>
