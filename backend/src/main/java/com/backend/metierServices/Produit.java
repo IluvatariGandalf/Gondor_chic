@@ -7,13 +7,15 @@ public class Produit {
     private int quantiteEnStock;
     private boolean estDuJour;
 
+    private String imageLink;
 
-    public Produit(String reference, String libelle, float prix, int quantiteEnStock, boolean estDuJour) {
+    public Produit(String reference, String libelle, float prix, int quantiteEnStock, boolean estDuJour, String imageLink) {
         this.reference = reference;
         this.libelle = libelle;
         this.prix = prix;
         this.quantiteEnStock = quantiteEnStock;
         this.estDuJour = estDuJour;
+        this.imageLink = imageLink;
     }
 
     public String getReference() {
@@ -54,5 +56,13 @@ public class Produit {
 
     public void setEstDuJour(boolean estDuJour) {
         this.estDuJour = estDuJour;
+    }
+
+    public String getImageLink() {
+        return imageLink;
+    }
+
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 }
