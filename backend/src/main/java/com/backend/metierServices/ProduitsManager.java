@@ -1,6 +1,8 @@
 package com.backend.metierServices;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProduitsManager {
     private static final String DB_URL = "jdbc:postgresql://localhost:5432/gondor_chic";
@@ -28,6 +30,30 @@ public class ProduitsManager {
 
         // If no product of the day is found, return null or handle accordingly
         return null;
+    }
+
+    public static List<Produit> getProduits() {
+        // Implement this method to return all products from the database
+        String query = "SELECT reference, libelle, prix, quantiteEnStock, estDuJour FROM T_PRODUIT";
+        List<Produit> produits = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(query);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                String reference = rs.getString("reference");
+                String libelle = rs.getString("libelle");
+                float prix = rs.getFloat("prix");
+                int quantiteEnStock = rs.getInt("quantiteEnStock");
+                boolean estDuJour = rs.getBoolean("estDuJour");
+
+                Produit produit = new Produit(reference, libelle, prix, quantiteEnStock, estDuJour);
+                produits.add(produit);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return produits;
     }
 
     public static void main(String[] args) {
