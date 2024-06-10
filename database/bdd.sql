@@ -37,7 +37,7 @@ CREATE TABLE T_PRODUIT(
     reference VARCHAR(100) NOT NULL,
     libelle VARCHAR(250) NOT NULL,
     estDuJour BOOLEAN NOT NULL,
-    prix FLOAT NOT NULL,
+    prix NUMERIC NOT NULL,
     quantiteEnStock INT,
     imageLink VARCHAR(255)
 );
