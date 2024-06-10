@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SessionPasserCde {
+public class ProduitsController {
     @GetMapping("/produitDuJour")
     public ResponseEntity<?> getProduitDuJour() {
         Produit produitDuJour = ProduitsManager.rechercherProduitDuJour();
