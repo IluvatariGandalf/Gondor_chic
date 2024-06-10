@@ -9,5 +9,5 @@ import { Produit } from '../../model/produit/produit.model';
   styleUrl: './produit-block-small.component.css'
 })
 export class ProduitBlockSmallComponent {
-    @Input({alias:'produit'}) produitDuJour!: Produit;
+    @Input({alias:'produit'}) produit!: Produit;
 }
