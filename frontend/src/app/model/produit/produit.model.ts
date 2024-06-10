@@ -40,11 +40,20 @@ export class Produit {
         this._estDuJour = value;
     }
 
-    public constructor(reference: string, libelle: string, prix: number, quantiteEnStock: number, estDuJour: boolean){
+    private _imageLink!: string;
+    public get imageLink(): string {
+        return this._imageLink;
+    }
+    public set imageLink(value: string) {
+        this._imageLink = value;
+    }
+
+    public constructor(reference: string, libelle: string, prix: number, quantiteEnStock: number, estDuJour: boolean, imageLink: string){
         this.reference = reference;
         this.libelle = libelle;
         this.prix = prix;
         this.quantiteEnStock = quantiteEnStock;
         this.estDuJour = estDuJour;
+        this.imageLink = imageLink;
     }
 }

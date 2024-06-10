@@ -17,7 +17,7 @@ describe('HorizontalNavBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('doit etre créée', () => {
     expect(component).toBeTruthy();
   });
 });

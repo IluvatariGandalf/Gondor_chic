@@ -30,7 +30,7 @@ export class PageAccueilComponent implements OnInit{
         this.produitService.rechercherProduitDuJour().subscribe({
             next: (response) => {
                 var data = JSON.parse(JSON.stringify(response));
-                this.produitDuJour = new Produit(data.reference, data.libelle, data.prix, data.quantiteEnStock, data.estDuJour);
+                this.produitDuJour = new Produit(data.reference, data.libelle, data.prix, data.quantiteEnStock, data.estDuJour, data.imageLink);
             },
             error: (error) => {
                 console.log(error)
@@ -42,7 +42,7 @@ export class PageAccueilComponent implements OnInit{
                 var datas = JSON.parse(JSON.stringify(response)); 
                 for(let item of datas){
                     var data = JSON.parse(JSON.stringify(item));
-                    this.produits.push( new Produit(data.reference, data.libelle, data.prix, data.quantiteEnStock, data.estDuJour) );
+                    this.produits.push( new Produit(data.reference, data.libelle, data.prix, data.quantiteEnStock, data.estDuJour, data.imageLink) );
                 }              
             },
             error: (error) => {
