@@ -16,10 +16,33 @@
                 <a class="btn btn-dil-primary mx-2">
                     Panier
                 </a>
-                <a class="btn btn-dil-primary mx-2">
-                    Se connecter
-                </a>
+                <button type="button" class="btn btn-dil-primary mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                    S'identifier
+                </button>
             </span>
         </div>
     </div>
 </nav>
+
+
+  
+  <!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" >
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card">
+            <div class="modal-header d-flex justify-content-center">
+                <h1 class="modal-title fs-5" id="loginModalLabel">S'identifier</h1>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-3" placeholder="Pseudo" aria-label="Pseudo" aria-describedby="basic-addon1">
+                    <input type="password" class="form-control mb-3" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="basic-addon1">
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button type="button" class="btn btn-dil-green">S'identifier</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

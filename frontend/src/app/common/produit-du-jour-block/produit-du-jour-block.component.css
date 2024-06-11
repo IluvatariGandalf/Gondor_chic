@@ -1,0 +1,32 @@
+.produit-jour-border{
+    border: 35px solid black;
+    border-image: url("../../../../public/assets/img/border-1-fill.png");
+    
+    
+    /* border-1 */
+    border-image-slice: 230 fill;
+
+    /* border-1.old */
+    /* border-image-slice: 195 295 fill; */
+
+    /* border-2 */
+    /* border-image-slice: 100; */ 
+}
+
+.produit-jour-img-border{
+    border: 2.5px solid black;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25)!important;
+}
+
+.produit-bs-card{
+    min-height: 300px;
+}
+
+.form-control{
+    border-radius: 0;
+    width: 100px;
+    background: linear-gradient(to left, rgba(0,0,0,0.15), rgba(255,255,255,0))!important;
+    background-color: #EFD8C2!important;
+    border: solid 1px #B19271!important;
+    box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25);
+}
