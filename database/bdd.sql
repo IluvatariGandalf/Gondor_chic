@@ -1,5 +1,5 @@
 -- Création de la base de données GONDORCHIC
---CREATE DATABASE GONDORCHIC;
+CREATE DATABASE GONDORCHIC;
 
 
 -- Création du schéma GONDOR_PROJECT
@@ -22,9 +22,10 @@ DROP TABLE IF EXISTS "T_UTILISATEUR" ;
 CREATE TABLE "T_UTILISATEUR" 
 (
 "ID"                UUID PRIMARY KEY DEFAULT Uuid_generate_v4(),
-"username"          VARCHAR(100) NOT NULL,
-"login"             VARCHAR(100) NOT NULL,	
-"password"          VARCHAR(255) NOT NULL,
+"nom"               VARCHAR(100) NOT NULL,
+"prenom"            VARCHAR(100) NOT NULL,
+"pseudo"            VARCHAR(100) NOT NULL,	
+"mdp"               VARCHAR(255) NOT NULL,
 "dateInscription"   DATE
 );
 
