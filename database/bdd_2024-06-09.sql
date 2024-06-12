@@ -18,15 +18,14 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 ----------------------------------------------------------------------------
 ----------------- Table N°1 : "GONDOR_PROJECT"."T_UTILISATEUR" ----------------
 ----------------------------------------------------------------------------
-DROP TABLE IF EXISTS "T_UTILISATEUR" ;
-CREATE TABLE "T_UTILISATEUR" 
+DROP TABLE IF EXISTS "T_CLIENT" ;
+CREATE TABLE "T_CLIENT" 
 (
-"ID"                UUID PRIMARY KEY DEFAULT Uuid_generate_v4(),
-"nom"               VARCHAR(100) NOT NULL,
-"prenom"            VARCHAR(100) NOT NULL,
-"pseudo"            VARCHAR(100) NOT NULL,	
-"mdp"               VARCHAR(255) NOT NULL,
-"dateInscription"   DATE
+"numero"               UUID PRIMARY KEY DEFAULT Uuid_generate_v4(),
+"pseudo"               VARCHAR(100) NOT NULL,
+"motDePasse"           VARCHAR(100) NOT NULL,
+"nom"                  VARCHAR(100) NOT NULL,	
+"prenom"               VARCHAR(255) NOT NULL
 );
 
 ----------------------------------------------------------------------------
@@ -50,13 +49,20 @@ CREATE TABLE T_PRODUIT(
 ----------------------------------------------------------------------------
 
 INSERT INTO T_PRODUIT(reference ,libelle,estDuJour,prix,quantiteEnStock ,imageLink) VALUES
-('REF001','Poudre de fée',true,250,500,''),
-('REF002','Palantir',false,300,500,''),
-('REF003','Pierre Arcane',true,500,500,'');
-    
+('REF001','Poudre de fée',false,250,500,''),
+('REF002','Palantir',true,300,500,''),
+('REF003','Pierre Arcane',false,500,500,'');
 
 ----------------------------------------------------------------------------
--------- Requête N°2 : Obtention des produits du jour -------
+-------- Requête N°2 : Insertion des produits -------
+----------------------------------------------------------------------------
+
+INSERT INTO T_CLIENT(pseudo,motDePasse,nom,prenom) VALUES
+('frondon','1234#','Frodon','Le Magnifique'),
+('sauron','5678#','Sauron','Merveille');
+
+----------------------------------------------------------------------------
+-------- Requête N°3 : Obtention des produits du jour -------
 ----------------------------------------------------------------------------
 SELECT * FROM t_produit 
 WHERE estDuJour = true;
