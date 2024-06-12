@@ -12,7 +12,7 @@
     
     <div class="col-md-10 col-12 d-flex flex-column mb-3">
         <div class="mb-3">
-            <h1 class="svg-text mb-0">Bonjour, </h1>
+            <h1 class="svg-text mb-0" *ngIf="client">Bonjour, {{client.nom}} {{client.prenom}}</h1>
             <!-- <svg style="z-index: 99;" version="1.0" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1280.000000 640.000000"
             preserveAspectRatio="xMidYMid meet">

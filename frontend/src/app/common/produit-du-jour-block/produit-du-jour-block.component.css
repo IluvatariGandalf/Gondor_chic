@@ -1,10 +1,10 @@
 .produit-jour-border{
     border: 35px solid black;
-    border-image: url("../../../../public/assets/img/border-1-fill.png");
+    border-image: url("../../../../public/assets/img/border-1-fill-hor.png");
     
     
     /* border-1 */
-    border-image-slice: 230 fill;
+    border-image-slice: 230 350 230 350 fill;
 
     /* border-1.old */
     /* border-image-slice: 195 295 fill; */
@@ -12,7 +12,9 @@
     /* border-2 */
     /* border-image-slice: 100; */ 
 }
-
+.produit-jour-img{
+    max-width: 50%;
+}
 .produit-jour-img-border{
     border: 2.5px solid black;
     box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25)!important;
@@ -20,6 +22,7 @@
 
 .produit-bs-card{
     min-height: 300px;
+    max-height: 300px;
 }
 
 .form-control{

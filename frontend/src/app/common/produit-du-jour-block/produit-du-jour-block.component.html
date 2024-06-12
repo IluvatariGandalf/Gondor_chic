@@ -1,9 +1,10 @@
-<div class="d-flex flex-row produit-jour-border produit-bs-card" *ngIf="produitDuJour">
-    <img class="img-fluid produit-jour-img-border" src="assets/img/{{ produitDuJour.imageLink }}">
+<div class="d-flex flex-row produit-jour-border produit-bs-card overflow-hidden" *ngIf="produitDuJour">
+    <img class="img-fluid produit-jour-img produit-jour-img-border" src="assets/img/{{ produitDuJour.imageLink }}">
     <div class="my-4 mx-3 d-flex flex-column justify-content-between">
         <h3>{{ produitDuJour.libelle }}</h3>
         <div>
             <h4> <span class="fw-bold">{{ produitDuJour.prix }}</span> pièce(s) d'or</h4>
+            <h4 class="text-secondary">Quantité en stock: <span class="fw-bold">{{ produitDuJour.quantiteEnStock }}</span></h4>
             <div>
                 <div class="d-flex">
                     <input type="number" min="0" class="form-control me-2" placeholder="Qté" aria-label="Qté" aria-describedby="basic-addon1">

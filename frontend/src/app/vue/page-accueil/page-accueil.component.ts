@@ -5,6 +5,7 @@ import { ProduitBlockSmallComponent } from '../../common/produit-block-small/pro
 import { Produit } from '../../model/produit/produit.model';
 import { CommonModule } from '@angular/common';
 import { ProduitService } from '../../services/produit/produit.service';
+import { Client } from '../../model/client/client.model';
 
 @Component({
     selector: 'app-page-accueil',
@@ -19,6 +20,7 @@ import { ProduitService } from '../../services/produit/produit.service';
     styleUrl: './page-accueil.component.css'
 })
 export class PageAccueilComponent implements OnInit{
+    client: Client = new Client(1, 'frondon','1234#','Frodon','Le Magnifique');
     produitDuJour!: Produit;
     produits: Produit[] = [];
     categories: any = [ "Objets Magiques", "Armure", "Armements"];
