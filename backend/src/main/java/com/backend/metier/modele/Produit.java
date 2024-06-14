@@ -1,4 +1,4 @@
-package com.backend.metierServices;
+package com.backend.metier.modele;
 
 public class Produit {
     private String reference;

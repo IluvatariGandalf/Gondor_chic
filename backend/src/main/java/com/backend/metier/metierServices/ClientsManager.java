@@ -1,15 +1,21 @@
-package com.backend.metierServices;
+package com.backend.metier.metierServices;
+
+import com.backend.metier.modele.Client;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class ClientsManager {
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/gondorchic";
-    private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "root";
+@Service
+public class ClientsManager implements ClientsServiceAPI {
+    @Value("${spring.datasource.url}")
+    private String DB_URL;
+    @Value("${spring.datasource.username}")
+    private String DB_USER;
+    @Value("${spring.datasource.password}")
+    private String DB_PASSWORD;
 
-    public static Client rechercherClientParPseudo(String pseudo, String motDePasse) throws Exception {
+    public Client rechercherClientParPseudo(String pseudo, String motDePasse) throws Exception {
         String query = "SELECT numero, pseudo, motdepasse, nom, prenom FROM \"GONDOR_PROJECT\".\"t_client\" WHERE pseudo = ? AND motdepasse = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement pstmt = conn.prepareStatement(query)) {

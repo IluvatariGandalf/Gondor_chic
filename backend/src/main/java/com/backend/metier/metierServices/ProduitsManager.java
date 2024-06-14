@@ -1,14 +1,22 @@
-package com.backend.metierServices;
+package com.backend.metier.metierServices;
+
+import com.backend.metier.modele.Produit;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProduitsManager {
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/gondorchic";
-    private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "root";
-    public static Produit rechercherProduitDuJour() {
+@Service
+public class ProduitsManager implements ProduitsServiceAPI {
+    @Value("${spring.datasource.url}")
+    private String DB_URL;
+    @Value("${spring.datasource.username}")
+    private String DB_USER;
+    @Value("${spring.datasource.password}")
+    private String DB_PASSWORD;
+    public Produit rechercherProduitDuJour() {
         String query = "SELECT reference, libelle, prix, quantiteEnStock, estDuJour, imageLink FROM \"GONDOR_PROJECT\".\"t_produit\" WHERE estDuJour = TRUE";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
              PreparedStatement pstmt = conn.prepareStatement(query);
@@ -33,7 +41,7 @@ public class ProduitsManager {
         return null;
     }
 
-    public static List<Produit> getProduits() {
+    public List<Produit> getProduits() {
         String query = "SELECT reference, libelle, prix, quantiteEnStock, estDuJour, imageLink FROM \"GONDOR_PROJECT\".\"t_produit\"";
         List<Produit> produits = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -57,18 +65,4 @@ public class ProduitsManager {
         return produits;
     }
 
-    public static void main(String[] args) {
-        Produit produitDuJour = ProduitsManager.rechercherProduitDuJour();
-
-        if (produitDuJour != null) {
-            System.out.println("Produit du jour: " + produitDuJour.getLibelle());
-        } else {
-            System.out.println("Aucun produit du jour trouvé.");
-        }
-
-        List<Produit> allProduits = ProduitsManager.getProduits();
-        for (Produit produit : allProduits) {
-            System.out.println(produit.getLibelle());
-        }
-    }
 }
