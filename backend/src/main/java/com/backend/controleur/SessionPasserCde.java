@@ -20,7 +20,7 @@ public class SessionPasserCde {
     ClientsServiceAPI clientsServiceAPI;
 
     @PostMapping("/connexion")
-    public ResponseEntity<?> connexion(@RequestBody Client client) {
+    public ResponseEntity<?> traiterIdentification(@RequestBody Client client) {
         try {
             Client clientTrouve = clientsServiceAPI.rechercherClientParPseudo(client.getPseudo(), client.getMotDePasse());
             return ResponseEntity.ok(clientTrouve);
