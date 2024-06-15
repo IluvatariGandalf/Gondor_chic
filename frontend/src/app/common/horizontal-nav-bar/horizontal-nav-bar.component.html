@@ -13,12 +13,16 @@
             </form>
 
             <span class="navbar-text">
-                <a class="btn btn-dil-primary mx-2">
+                <button type="button" class="btn btn-dil-primary mx-2" data-bs-toggle="modal" data-bs-target="#panierModal" (click)="getPanier()">
                     Panier
-                </a>
-                <button type="button" class="btn btn-dil-primary mx-2" data-bs-toggle="modal" data-bs-target="#loginModal">
+                </button>
+                <!-- <button type="button" class="btn btn-dil-primary mx-2" data-bs-toggle="modal" data-bs-target="#loginModal" *ngIf="!client">
+                    S'identifier
+                </button> -->
+                <button type="button" class="btn btn-dil-primary mx-2" *ngIf="client == '{}'" (click)="openModal()">
                     S'identifier
                 </button>
+                <button type="button" class="btn btn-dil-green" *ngIf="client != '{}'" (click)="seDeconnecter()">Se deconnecter</button>
             </span>
         </div>
     </div>
@@ -27,7 +31,7 @@
 
   
   <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" >
+<div class="modal fade {{showModal}}" id="loginModal" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" >
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content card">
             <div class="modal-header d-flex justify-content-center">
@@ -35,14 +39,34 @@
             </div>
             <form>
                 <div class="modal-body">
-                    <input type="text" class="form-control mb-3" placeholder="Pseudo" aria-label="Pseudo" aria-describedby="basic-addon1">
-                    <input type="password" class="form-control mb-3" placeholder="Mot de passe" aria-label="Mot de passe" aria-describedby="basic-addon1">
+                    <div class="alert alert-sm alert-danger" *ngIf="loginError">{{this.loginError.error}}</div>
+                    <input type="text" class="form-control mb-3" placeholder="Pseudo" [(ngModel)]="pseudo" name="pseudo" aria-label="Pseudo" aria-describedby="basic-addon1">
+                    <input type="password" class="form-control mb-3" placeholder="Mot de passe" [(ngModel)]="motDePasse" name="motDePasse" aria-label="Mot de passe" aria-describedby="basic-addon1">
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-dil-green">S'identifier</button>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn btn-dil-green" (click)="sIdentifier()">S'identifier</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="panierModal" aria-labelledby="panierModalLabel" aria-hidden="true" data-bs-backdrop="static" >
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content card">
+            <div class="modal-header d-flex justify-content-center">
+                <h1 class="modal-title fs-5" id="panierModalLabel">Panier</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-border">
+                    <tr *ngFor="let item of panier">
+                        <td>{{item.produit._libelle}}</td>
+                        <td>{{item.qte}}</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>

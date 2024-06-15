@@ -18,8 +18,14 @@
     box-shadow: 0 4px 2px -2px rgba(0,0,0,0.25)!important;
 }
 
+.produit-img{
+    min-height: 50%;
+    max-height: 50%;
+}
+
 .produit-bs-card{
     min-width: 300px;
     max-width: 300px;
-    min-height: 400px;
+    min-height: 500px;
+    max-height: 500px;
 }

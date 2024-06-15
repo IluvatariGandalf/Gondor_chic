@@ -6,9 +6,10 @@ import { Produit } from '../../model/produit/produit.model';
 import { CommonModule } from '@angular/common';
 import { ProduitService } from '../../services/produit/produit.service';
 import { Client } from '../../model/client/client.model';
+import { LocalStorageService } from '../../services/storage/local-storage.service';
 
 @Component({
-    selector: 'app-page-accueil',
+    selector: 'app-page-accueil-perso',
     standalone: true,
     imports: [
         HorizontalNavBarComponent,
@@ -16,18 +17,20 @@ import { Client } from '../../model/client/client.model';
         ProduitBlockSmallComponent,
         CommonModule
     ],
-    templateUrl: './page-accueil.component.html',
-    styleUrl: './page-accueil.component.css'
+    templateUrl: './page-accueil-perso.component.html',
+    styleUrl: './page-accueil-perso.component.css'
 })
-export class PageAccueilComponent implements OnInit{
-    client: Client = new Client(1, 'frondon','1234#','Frodon','Le Magnifique');
+export class PageAccueilPersoComponent implements OnInit{
+    client?: Client;
     produitDuJour!: Produit;
     produits: Produit[] = [];
     categories: any = [ "Objets Magiques", "Armure", "Armements"];
     
-    constructor(private produitService: ProduitService){}
+    constructor(private produitService: ProduitService, private localStorage: LocalStorageService){}
 
     ngOnInit(): void {
+        var clientData = JSON.parse( this.localStorage.getItem('client') || '{}' );
+        this.client = new Client(clientData["numero"], clientData["pseudo"], clientData["motDePasse"], clientData["nom"], clientData["prenom"]);
 
         this.produitService.rechercherProduitDuJour().subscribe({
             next: (response) => {
