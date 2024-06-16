@@ -44,7 +44,13 @@
                     <input type="password" class="form-control mb-3" placeholder="Mot de passe" [(ngModel)]="motDePasse" name="motDePasse" aria-label="Mot de passe" aria-describedby="basic-addon1">
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button type="button" class="btn btn-dil-green" (click)="sIdentifier()">S'identifier</button>
+                    <button type="button" class="btn btn-dil-green" (click)="sIdentifier()">
+                        <span *ngIf="!identificationEnCours">
+                            S'identifier
+                        </span>
+                        <div class="spinner-border" role="status" *ngIf="identificationEnCours">
+                        </div>
+                    </button>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
                 </div>
             </form>

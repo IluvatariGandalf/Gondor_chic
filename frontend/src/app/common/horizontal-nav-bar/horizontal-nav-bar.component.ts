@@ -20,6 +20,7 @@ export class HorizontalNavBarComponent implements OnInit{
     motDePasse: string = "";
     loginError: any;
     showModal = "";
+    identificationEnCours = false;
 
     panier: any[] = [];
 
@@ -46,6 +47,7 @@ export class HorizontalNavBarComponent implements OnInit{
     }
 
     sIdentifier(){
+        this.identificationEnCours = true;
         this.loginError = undefined;
         var client = new Client(0, this.pseudo, this.motDePasse, "", "");
         this.clientService.sIdentifier(client).subscribe({
@@ -53,9 +55,12 @@ export class HorizontalNavBarComponent implements OnInit{
                 var data = JSON.stringify(response);
                 this.client = data;
                 this.localStorage.setItem("client", data);
+                this.identificationEnCours = false;
             },
             error: (error) => {
+                alert(error.error);
                 this.loginError = error;
+                this.identificationEnCours = false;
             },
             complete: () => {
                 this.closeModal();
