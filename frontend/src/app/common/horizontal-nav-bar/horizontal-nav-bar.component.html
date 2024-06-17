@@ -40,8 +40,20 @@
             <form>
                 <div class="modal-body">
                     <div class="alert alert-sm alert-danger" *ngIf="loginError">{{this.loginError.error}}</div>
-                    <input type="text" class="form-control mb-3" placeholder="Pseudo" [(ngModel)]="pseudo" name="pseudo" aria-label="Pseudo" aria-describedby="basic-addon1">
-                    <input type="password" class="form-control mb-3" placeholder="Mot de passe" [(ngModel)]="motDePasse" name="motDePasse" aria-label="Mot de passe" aria-describedby="basic-addon1">
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-3 col-form-label">Pseudo</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control mb-3" placeholder="Pseudo" [(ngModel)]="pseudo" name="pseudo" aria-label="Pseudo" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label">Mot de passe</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control mb-3" placeholder="Mot de passe" [(ngModel)]="motDePasse" name="motDePasse" aria-label="Mot de passe" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    
+                    
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button type="button" class="btn btn-dil-green" (click)="sIdentifier()">
